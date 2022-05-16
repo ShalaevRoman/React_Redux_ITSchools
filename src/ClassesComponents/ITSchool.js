@@ -13,6 +13,8 @@
 // ---------------------------
 //     Класс Lesson -- самый простой класс, должен содержать конструктор, который принимает заголовок урока и темы, которые были рассмотрены на уроке.
 //     Сделайте это домашнее задание внутри пустого CRA приложения. Из него мы потом будет делать непосредственно копию LMS, в которой вы сейчас находитесь)
+import { Course } from "./Course"
+import { LearningGroup } from "./LearningGroup"
 
 class ITSchool {
     constructor(courseName, description, maxGroup, maxStudentsInGroup) {
@@ -26,7 +28,7 @@ class ITSchool {
 
     registerCourse(courseName, totalLessons, availableTeachersAmount) {
         if(this.maxGroup > 0) {
-            if(this.availableCourses.length === 0) {
+            if(!this.availableCourses.length) {
                 this.availableCourses.push(new Course(courseName, totalLessons, availableTeachersAmount));
                 return;
             };
@@ -65,51 +67,13 @@ class ITSchool {
     };
 
     getLearningGroupByCourseName(courseName) {
-         const GroupByCourse = this.startedGroups.filter(group => group.courseName === courseName);
-         return GroupByCourse;
-    };
-};
-
-class Course {
-    constructor(courseName, totalLessons, availableTeachersAmount) {
-        this.courseName = courseName;
-        this.totalLessons = totalLessons;
-        this.availableTeachersAmount = availableTeachersAmount;
-    }
-};
-
-class LearningGroup {
-    constructor(courseName, teacherName, numberStudentsInGroup) {
-        this.courseName = courseName;
-        this.teacherName = teacherName;
-        this.numberStudentsInGroup = numberStudentsInGroup;
-        this.passedLessons = [];
-    };
-
-    doneLesson(title, topics) {
-        this.passedLessons.length > 0 ?
-            this.lessonOverCheck(title, topics) :
-            this.passedLessons.push(new Lesson(title, topics));
-    };
-
-    lessonOverCheck(title, topics) {
-        this.passedLessons.forEach(lesson => {
-            if(lesson.title !== title) {
-                this.passedLessons.push(new Lesson(title, topics))
-            }else {alert('Lesson is over!')};
-        });
-    };
-};
-
-class Lesson {
-    constructor(title, topics) {
-        this.title = title;
-        this.topics = topics;
+         const groupByCourse = this.startedGroups.filter(group => group.courseName === courseName);
+         return groupByCourse;
     };
 };
 
 const react = new ITSchool("React", "bla-bla", 5, 12);
-
+console.log(react)
 
 
 
