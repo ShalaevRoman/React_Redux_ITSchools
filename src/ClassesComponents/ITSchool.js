@@ -56,7 +56,9 @@ class ITSchool {
     };
 
     endLearningGroup(courseName, teacherName) {
-        this.startedGroups = this.startedGroups.filter(group => (group.courseName === courseName && group.teacherName !== teacherName));
+        this.startedGroups = this.startedGroups.filter(group => (
+            group.courseName === courseName && group.teacherName !== teacherName
+        ));
             this.maxGroup++
 
         this.availableCourses.forEach(course => {
