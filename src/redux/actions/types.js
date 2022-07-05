@@ -1,0 +1,3 @@
+export const ADD_NEW_SCHOOL = "ADD_NEW_SCHOOL";
+export const REMOVE_SCHOOL = "REMOVE_SCHOOL";
+export const REGISTER_COURSE = "REGISTER_COURSE";

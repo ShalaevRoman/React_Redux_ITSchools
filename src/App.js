@@ -1,13 +1,16 @@
-import './App.css';
+import * as React from 'react';
+import {Provider} from 'react-redux';
+
+import Home from "./containers/Home.js"
+import store from "./redux/store.js";
 
 
-function App() {
-
+const App = () => {
   return (
-    <div className="App">
-
-    </div>
-  );
+      <Provider store={store}>
+        <Home />
+      </Provider>
+  )
 }
 
 export default App;
