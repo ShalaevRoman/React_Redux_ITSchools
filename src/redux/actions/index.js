@@ -8,6 +8,19 @@ export const removeAvailableSchool = (index) => {
     return { type: types.REMOVE_SCHOOL, payload: index};
 };
 
-export const registerAndCheckCourse = (payload) => {
-    return { type: types.REGISTER_COURSE, payload: payload }
-}
+export const registerCourse = (dataCourse) => {
+    return { type: types.REGISTER_COURSE, payload: dataCourse };
+};
+
+export const startLearningGroup = (dataGroup) => {
+    return { type: types.START_LEARNING_GROUP, payload: dataGroup };
+};
+
+export const removeLearningGroup = (dataGroup) => {
+    return { type: types.REMOVE_LEARNING_GROUP, payload: dataGroup };
+};
+
+export const doneLessonInGroup = (lessonInfo) => {
+    return { type: types.DONE_LESSON, payload: lessonInfo };
+};
+

@@ -1,10 +1,25 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { addNewSchool, removeAvailableSchool, registerAndCheckCourse } from '../redux/actions/index.js';
+import {
+    addNewSchool,
+    removeAvailableSchool,
+    registerCourse,
+    startLearningGroup,
+    removeLearningGroup,
+    doneLessonInGroup
+} from '../redux/actions/index.js';
 
 
 
-const Home = ({addSchool, schools, removeSchool, registerCourse}) => {
+const Home = ({
+                  addSchool,
+                  schools,
+                  removeSchool,
+                  registerGroup,
+                  startCourse,
+                  removeGroup,
+                  doneLesson
+}) => {
 
     React.useEffect(() => {
 
@@ -15,9 +30,10 @@ const Home = ({addSchool, schools, removeSchool, registerCourse}) => {
             maxStudentsInGroup: 10,
             availableCourses: [],
             startedGroups: [],
+            history: `Created ${new Date().toDateString()}`,
         });
 
-        registerCourse({
+        startCourse({
             index: 0,
             course: {
                 courseName: 'React',
@@ -26,14 +42,50 @@ const Home = ({addSchool, schools, removeSchool, registerCourse}) => {
             }
         });
 
-        registerCourse({
+        startCourse({
             index: 0,
             course: {
-                courseName: 'Noda',
+                courseName: 'Node',
                 totalLessons: 9,
-                availableTeachersAmount: 2,
+                availableTeachersAmount: 5,
             }
-        })
+        });
+
+        registerGroup({
+            index: 0,
+            group: {
+                courseName: 'Node',
+                teacherName: 'Roman',
+                numberStudentsInGroup: 9,
+                passedLessons: [],
+            }
+        });
+
+        registerGroup({
+            index: 0,
+            group: {
+                courseName: 'React',
+                teacherName: 'Petya',
+                numberStudentsInGroup: 8,
+                passedLessons: [],
+            }
+        });
+
+        removeGroup({
+            index: 0,
+            courseName: 'React',
+            teacherName: 'Petya',
+        });
+
+        doneLesson({
+            index: 0,
+            indexGroup: 0,
+            lesson: {
+                title: 'Redux',
+                topic: 'Reducer, action, connect'
+            },
+        });
+
 
     }, [])
 
@@ -51,7 +103,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     addSchool: (newSchool) => dispatch(addNewSchool(newSchool)),
     removeSchool: (index) => dispatch(removeAvailableSchool(index)),
-    registerCourse: (payload) => dispatch(registerAndCheckCourse(payload))
+    startCourse: (payload) => dispatch(registerCourse(payload)),
+    registerGroup: (payload) => dispatch(startLearningGroup(payload)),
+    removeGroup: (payload) => dispatch(removeLearningGroup(payload)),
+    doneLesson: (lessonInfo) => dispatch(doneLessonInGroup(lessonInfo))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
