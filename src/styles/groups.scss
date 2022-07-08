@@ -1,0 +1,58 @@
+@import 'colors';
+
+//$hoverGrey: #5A5A5A;
+//$backgroundGrey: #D9D9D9;
+//$itemGrey: #969696;
+//$bodyGrey: #e7e7e7;
+
+.groups_wrapper {
+  flex-basis: 80%;
+  margin-left: 20px;
+  background: $backgroundGrey;
+
+  h1 {
+    color: $itemGrey;
+    padding: 10px 0 0 10px;
+  }
+
+  .groups_list {
+
+    .groups_item {
+      background: $itemGrey;
+      margin: 10px;
+
+      h1 {
+        background: $itemGrey;
+        padding: 10px 0 0 10px;
+        color:  white;
+      }
+
+      .groups_item_info{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px;
+        background: $itemGrey;
+
+        .groups_item_block{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 150px;
+          height: 100px;
+          margin: 15px;
+          background: $bodyGrey;
+
+          :first-child {
+            font-weight: 400;
+            font-size: 25px;
+            line-height: 39px;
+          }
+        }
+      }
+    }
+
+
+  }
+}

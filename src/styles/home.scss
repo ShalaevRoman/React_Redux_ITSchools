@@ -1,0 +1,78 @@
+@import 'mixin';
+@import 'colors';
+
+body {
+  @include flex;
+  height: 100vh;
+  background:  #F5F5F5;;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+}
+
+#root {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.main_wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  min-height: 80vh;
+
+  .not_selected {
+    display: flex;
+    flex-basis: 85%;
+    font-size: 30px;
+    background-color: $bodyGrey;
+    color: $itemGrey;
+
+    .not_selected_text {
+      @include flex;
+      width: 100%;
+    }
+  }
+
+  .availableSchool_wrapper {
+    align-items: center;
+    flex-basis: 15%;
+    background: $bodyGrey;
+
+    .school_list {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      background: $bodyGrey;
+      align-items: center;
+
+      .school_item {
+        @include flex;
+        background: $itemGrey;
+        width: 100px;
+        height: 100px;
+        color: white;
+        border-radius: 2px;
+
+        &:hover {
+          background: $hoverGrey;
+          transition: background 0.7s;
+        }
+      }
+    }
+  }
+
+  .schoolData_wrapper {
+    display: flex;
+    flex-direction: column;
+    background: url(../assets/background.png) no-repeat;
+    background-size: cover;
+    flex-basis: 85%;
+  }
+
+  .schoolData_main {
+    flex-basis: 100%;
+    margin: 30px 30px;
+    display: flex;
+  }
+}
